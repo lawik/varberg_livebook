@@ -37,7 +37,7 @@ defmodule NervesLivebook.MixProject do
   def application do
     [
       mod: {NervesLivebook.Application, []},
-      extra_applications: [:logger, :runtime_tools, :inets, :ex_unit]
+      extra_applications: [:logger, :runtime_tools, :inets, :ex_unit, :mdns_lite]
     ]
   end
 
@@ -101,10 +101,16 @@ defmodule NervesLivebook.MixProject do
       {:nerves_system_mangopi_mq_pro, "~> 0.4", runtime: false, targets: :mangopi_mq_pro},
       {:nerves_system_srhub, "~> 0.25", runtime: false, targets: :srhub},
 
+      {:nerves_node, path: "../nerves_node", targets: @all_targets},
+      {:evision, "~> 0.1", targets: @all_targets},
+      {:telegram, git: "https://github.com/visciang/telegram.git", tag: "0.22.4"},
+      {:hackney, "~> 1.17", targets: @all_targets},
+
+
       # Compile-time only
       {:credo, "~> 1.6", only: :dev, runtime: false},
       {:dialyxir, "~> 1.2.0", only: :dev, runtime: false},
-      {:sbom, "~> 0.6", only: :dev, runtime: false}
+      {:sbom, "~> 0.6", only: :dev, runtime: false},
     ]
   end
 

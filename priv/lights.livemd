@@ -1,0 +1,24 @@
+# Mango
+
+```elixir
+Mix.install([{:delux, "~> 0.4"}])
+```
+
+## Section
+
+```elixir
+File.ls!("/sys/class/leds/")
+```
+
+```elixir
+Delux.start_link(
+  indicators: %{
+    default: %{red: "led0:red", green: "led0:green", blue: "led0:blue"}
+  }
+)
+
+Delux.render(%{
+  default: Delux.Effects.cycle([:black, :white], 1)
+})
+```
+
